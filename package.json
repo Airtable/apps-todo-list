@@ -1,20 +1,41 @@
 {
     "name": "@airtable/todo-app",
-    "version": "2.0.4",
+    "version": "2.0.5",
     "description": "A to-do list based on records in a table",
     "author": "",
     "license": "MIT",
     "scripts": {
-        "lint": "eslint frontend"
+        "ci": "cd ../../packages/sdk && yarn build && cd - && yarn test",
+        "cypress": "cypress run",
+        "lint": "eslint frontend test cypress",
+        "start-testing": "../../packages/cli/bin/block run --testing",
+        "test": "npm run lint && npm run test:jsdom",
+        "test:cypress": "START_SERVER_AND_TEST_INSECURE=1 start-server-and-test start-testing https://localhost:9000 cypress",
+        "test:jsdom": "jest --testMatch '**/*.jsdom.test.jsx'",
+        "test:webdriver": "START_SERVER_AND_TEST_INSECURE=1 start-server-and-test start-testing https://localhost:9000 webdriver",
+        "webdriver": "jest --env node --testMatch '**/*.webdriver.test.js'"
     },
     "dependencies": {
-        "@airtable/blocks": "latest",
+        "@airtable/blocks": "^1.5.1",
         "react": "^16.9.0",
         "react-dom": "^16.9.0"
     },
     "devDependencies": {
+        "@airtable/blocks-testing": "^0.0.3",
+        "@sheerun/mutationobserver-shim": "^0.3.3",
+        "@testing-library/cypress": "^7.0.3",
+        "@testing-library/dom": "^7.29.0",
+        "@testing-library/jest-dom": "^5.11.6",
+        "@testing-library/react": "^11.2.2",
+        "@testing-library/user-event": "^12.5.0",
+        "core-js": "^3.8.1",
+        "cypress": "^6.2.0",
         "eslint": "^6.3.0",
         "eslint-plugin-react": "^7.14.3",
-        "eslint-plugin-react-hooks": "^2.0.1"
+        "eslint-plugin-react-hooks": "^2.0.1",
+        "geckodriver": "^1.21.1",
+        "jest": "^24.9.0",
+        "selenium-webdriver": "^4.0.0-alpha.8",
+        "start-server-and-test": "^1.11.6"
     }
 }
