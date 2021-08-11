@@ -1,6 +1,6 @@
 {
     "name": "@airtable/todo-app",
-    "version": "2.0.5",
+    "version": "2.0.6",
     "description": "A to-do list based on records in a table",
     "author": "",
     "license": "MIT",
@@ -21,7 +21,7 @@
         "react-dom": "^16.9.0"
     },
     "devDependencies": {
-        "@airtable/blocks-testing": "^0.0.3",
+        "@airtable/blocks-testing": "^0.0.4",
         "@sheerun/mutationobserver-shim": "^0.3.3",
         "@testing-library/cypress": "^7.0.3",
         "@testing-library/dom": "^7.29.0",
@@ -33,7 +33,7 @@
         "eslint": "^6.3.0",
         "eslint-plugin-react": "^7.14.3",
         "eslint-plugin-react-hooks": "^2.0.1",
-        "geckodriver": "^1.21.1",
+        "geckodriver": "^2.0.2",
         "jest": "^24.9.0",
         "selenium-webdriver": "^4.0.0-alpha.8",
         "start-server-and-test": "^1.11.6"
