@@ -1,3 +1,6 @@
+/**
+ * @jest-environment jsdom
+ */
 import React from 'react';
 import {act} from 'react-dom/test-utils';
 import TestDriver from '@airtable/blocks-testing';
@@ -40,7 +43,7 @@ async function openAsync(table, view, field) {
 }
 
 function getItems() {
-    return screen.queryAllByRole('checkbox').map(checkbox => {
+    return screen.queryAllByRole('checkbox').map((checkbox) => {
         const container = checkbox.parentNode;
         const deleteButton = getByRole(container, 'button');
         const link = getByText(container, container.textContent.trim());
@@ -50,7 +53,7 @@ function getItems() {
 }
 
 function readItems() {
-    return getItems().map(item => ({
+    return getItems().map((item) => ({
         checked: item.checkbox.checked,
         text: item.container.textContent.trim(),
     }));
@@ -58,7 +61,7 @@ function readItems() {
 
 describe('TodoApp', () => {
     let mutations;
-    let addMutation = mutation => mutations.push(mutation);
+    let addMutation = (mutation) => mutations.push(mutation);
     let testDriver;
 
     beforeEach(() => {
@@ -94,7 +97,7 @@ describe('TodoApp', () => {
     // This test cannot be fully expressed using the capabilities currently
     // available in the SDK.
     it('renders a list of records (user without "write" permissions)', async () => {
-        testDriver.simulatePermissionCheck(mutation => {
+        testDriver.simulatePermissionCheck((mutation) => {
             return mutation.type === 'setMultipleGlobalConfigPaths';
         });
 
@@ -102,7 +105,7 @@ describe('TodoApp', () => {
 
         expect(screen.getByRole('button', {name: 'Add'}).disabled).toBe(true);
 
-        const items = getItems().map(item => ({
+        const items = getItems().map((item) => ({
             checked: item.checkbox.checked,
             text: item.container.textContent.trim(),
             checkboxDisabled: item.checkbox.disabled,

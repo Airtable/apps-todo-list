@@ -96,7 +96,7 @@ async function getItemsAsync(driver) {
 async function readItemsAsync(driver) {
     const items = await getItemsAsync(driver);
     return Promise.all(
-        items.map(async item => ({
+        items.map(async (item) => ({
             checked: (await item.checkbox.getAttribute('checked')) === 'true',
             text: (await item.container.getText()).trim(),
         })),
@@ -230,7 +230,7 @@ describe('TodoApp', () => {
         expect(await addButton.getAttribute('disabled')).toBe('true');
 
         const items = await Promise.all(
-            (await getItemsAsync(driver)).map(async item => ({
+            (await getItemsAsync(driver)).map(async (item) => ({
                 checked: (await item.checkbox.getAttribute('checked')) === 'true',
                 text: (await item.container.getText()).trim(),
                 checkboxDisabled: (await item.checkbox.getAttribute('disabled')) === 'true',

@@ -35,7 +35,7 @@ export default function TodoApp() {
     });
 
     const tasks = records
-        ? records.map(record => {
+        ? records.map((record) => {
               return <Task key={record.id} record={record} table={table} doneField={doneField} />;
           })
         : null;
